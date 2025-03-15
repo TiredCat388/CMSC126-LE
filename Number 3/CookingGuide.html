@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fried Rice Cooking Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let steps = ["step1", "note", "step2", "step3", "step4", "step5", "step6"];
+            let currentIndex = 0;
+
+            function updateStep(index) {
+                if (index >= 0 && index < steps.length) {
+                    window.location.hash = "#" + steps[index];
+                    currentIndex = index;
+                }
+            }
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowRight") {
+                    updateStep(currentIndex + 1);
+                } else if (event.key === "ArrowLeft") {
+                    updateStep(currentIndex - 1);
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                let restartButton = document.querySelector(".restart");
+                if (event.key ==="Enter" || event.key === " ") {
+                    updateStep(0);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Fried Rice Cooking Guide</h1>
+        <p class="underh1">Follow these steps to prepare delicious fried rice.</p>
+    </header>
+    
+    <main class="background">
+        <div class="container">
+            <section id="step1" class="step" tabindex="0">
+                <h2>Step 1: Gather Ingredients</h2>
+                <p>Prepare rice, vegetables, eggs, soy sauce, and oil.</p>
+                <a href="#note" class="next">Next</a>
+            </section>
+
+            <section id="note" class="step" tabindex="0">
+                <h2>Things to Note:</h2>
+                <p>Rice must be leftover rice</p>
+                <a href="#step1" class="prev">Previous</a>
+                <a href="#step2" class="next">Next</a>
+            </section>
+
+            <section id="step2" class="step" tabindex="0">
+                <h2>Step 2: Heat the Pan</h2>
+                <p>Heat oil in a pan over medium heat.</p>
+                <a href="#note" class="prev">Previous</a>
+                <a href="#step3" class="next">Next</a>
+            </section>
+
+            <section id="step3" class="step" tabindex="0">
+                <h2>Step 3: Cook the Eggs</h2>
+                <p>Scramble eggs and set them aside.</p>
+                <a href="#step2" class="prev">Previous</a>
+                <a href="#step4" class="next">Next</a>
+            </section>
+
+            <section id="step4" class="step" tabindex="0">
+                <h2>Step 4: Stir-fry Ingredients</h2>
+                <p>Add vegetables and rice to the pan, then stir-fry.</p>
+                <a href="#step3" class="prev">Previous</a>
+                <a href="#step5" class="next">Next</a>
+            </section>
+
+            <section id="step5" class="step" tabindex="0">
+                <h2>Step 5: Add Seasoning</h2>
+                <p>Add soy sauce and mix well.</p>
+                <a href="#step4" class="prev">Previous</a>
+                <a href="#step6" class="next">Next</a>
+            </section>
+
+            <section id="step6" class="step" tabindex="0">
+                <h2>Step 6: Serve & Enjoy</h2>
+                <p>Plate the fried rice and enjoy your meal!</p>
+                <a href="#step5" class="prev">Previous</a>
+                <a href="#step1" class="restart" tabindex="0">Restart</a>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
